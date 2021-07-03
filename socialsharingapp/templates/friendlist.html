@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% block title %}Friends{% endblock title %}
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        {% for i in profile %}
+        {% if i.friends.all %}
+        {% for j in i.friends.all %}
+        <div class="col-lg-6 col-md-6 col-10 mx-auto">
+            <section class="mainCard">
+                <div class="container">
+                    <div class="text-center">
+                        <img src="{{ j.profile.avatar.url }}" class="imageProfile" alt="">
+                        <h2 class="profileTitle">
+
+                            {% if j.profile.first_name or j.profile.last_name %}
+                            {{ j.profile.first_name }}
+                            {% else %}
+                            {{ j.profile.user }}
+                            {% endif %}
+
+                        </h2>
+                        <div class="row">
+                            {% if j.profile.instagram %}
+                            <div class="col-lg-4 col-6">
+                                <a href="https://instagram.com/{{ j.profile.instagram }}" target="_blank">
+                                    <i class="fab fa-instagram wkowwmLogo"></i>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% if j.profile.snapchat %}
+                            <div class="col-lg-4 col-6">
+                                <a href="https://instagram.com/{{ j.profile.snapchat }}" target="_blank">
+                                    <i class="fab fa-instagram wkowwmLogo"></i>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% if j.profile.twitter %}
+                            <div class="col-lg-4 col-6">
+                                <a href="https://twitter.com/{{ j.profile.twitter }}" target="_blank">
+                                    <i class="fab fa-twitter wkowwmLogo"></i>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% if j.profile.reddit %}
+                            <div class="col-lg-4 col-6">
+                                <a href="https://reddit.com/{{ j.profile.reddit }}" target="_blank">
+                                    <i class="fab fa-reddit wkowwmLogo"></i>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% if j.profile.facebook %}
+                            <div class="col-lg-4 col-6">
+                                <a href="https://facebook.com/{{ j.profile.facebook }}" target="_blank">
+                                    <i class="fab fa-facebook-f wkowwmLogo"></i>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% if j.profile.phone_num %}
+                            <div class="col-lg-4 col-6">
+                                <a href="call:{{ j.profile.phone_num }}" target="_blank">
+                                    <i class="fab fa-phone wkowwmLogo"></i>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% if j.profile.linkedin %}
+                            <div class="col-lg-4 col-6">
+                                <a href="https://linkedin.com/{{ j.profile.linkedin }}" target="_blank">
+                                    <i class="fab fa-linkedin-in wkowwmLogo"></i>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% if j.profile.clubhouse %}
+                            <div class="col-lg-4 col-6">
+                                <a href="https://clubhouse.com/{{ j.profile.clubhouse }}" target="_blank">
+                                    <i class="fab fa-instagram wkowwmLogo"></i>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% if j.profile.youtube %}
+                            <div class="col-lg-4 col-6">
+                                <a href="https://youtube.com/{{ j.profile.youtube }}" target="_blank">
+                                    <i class="fab fa-youtube wkowwmLogo"></i>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% if j.profile.gmail %}
+                            <div class="col-lg-4 col-6">
+                                <a href="mail-to:{{ j.profile.gmail }}" target="_blank">
+                                    <i class="fab fa-gmail wkowwmLogo"></i>
+                                </a>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="row">
+                            <form action="{% url 'removefromfriend' %}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="rem_fr_pk" value="{{ j.profile.pk }}" />
+                                <button type="submit" class="btn btn-outline-danger mb-2 buttonAddSocial">
+                                    Remove {{ j.profile.user.username }}
+                                </button>
+                            </form>
+                            <input type="hidden">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p class="nofriendstext">
+            Oopsss No friends.
+            Invite your friends now
+        </p>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock body %}

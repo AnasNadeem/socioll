@@ -1,0 +1,24 @@
+{% extends 'account/authenBase.html' %}
+{% block title %}Verify Account - EfashionBazaar{% endblock title %}
+{% block mainCont %}
+{% load static %}
+<section class="accountsec">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <img src="{% static 'image/mail_sent.svg' %}" class="illustrator"
+                    alt="Undraw illustrations EfashionBazaar">
+            </div>
+            <div class="col-lg-6 col-12">
+                <h1 class="illustratorTitle">Please verify your account</h1>
+                <p class="illustratorPara">
+                    We have sent an e-mail to you for
+                    verification. Follow the link provided to finalize
+                    the signup process. Please contact us if you do not
+                    receive it within a few minutes.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock mainCont %}

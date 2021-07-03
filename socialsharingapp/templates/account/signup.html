@@ -1,0 +1,46 @@
+{% extends 'account/authenBase.html' %}
+{% block title %}Signup{% endblock title %}
+{% block body %}
+{% load crispy_forms_tags %}
+<!-- Signup Form Begins  -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-5 col-12 mx-auto">
+            <section class="searhFriendCard">
+                <div class="container">
+                    <h3>Login Account</h3>
+                    <form class="form-signin" method="POST" action="{% url 'account_signup' %}">
+                        <div class="row">
+                            <div class="col-12 col-lg-12">
+                                {% csrf_token %}
+                                {{ form|crispy }}
+                                <button class="btn btn-primary buttonAddSocial mt-3" type="submit">Register</button>
+                                <div class="text-center">
+                                    <p>
+                                        Already Have an Account
+                                        <a href="{% url 'account_login' %}">Login</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<!-- Signup Form Ends  -->
+
+{% endblock body %}
+<!-- 
+{% block js %}
+<script>
+    $('input').addClass('form-control inputFormLogin');
+    let formInput = document.getElementsByTagName('input');
+    formInput[1].placeholder = 'Email ID..'
+    //formInput[2].placeholder = 'Mobile Number..'
+    formInput[2].placeholder = 'Username..'
+    formInput[3].placeholder = 'Password..'
+    formInput[4].placeholder = 'Confirm Password..'
+</script>
+{% endblock js %} -->

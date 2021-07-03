@@ -1,0 +1,139 @@
+{% extends 'base.html' %} {% block title %}Friend Request{% endblock title %}
+{% block body %} {% load static %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-12 mx-auto">
+            <section class="searhFriendCard">
+                <div class="container">
+                    <h3>Search your friend</h3>
+                    <div class="row">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <div class="col-8 col-lg-8">
+                                <input type="text" class="form-control" name="usernamefriend" placeholder="Username"
+                                    required>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <button class="btn btn-primary" type="submit">Search</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </section>
+
+            {% if search %}
+            <section class="searhFriendCard">
+                <div class="container">
+                    <h3>Search Result:</h3>
+                    <div class="row">
+                        <div class="col-lg-8 col-12 mx-auto">
+                            {% for res in search %}
+                            <div class="row friendrowcard">
+                                <div class="col-6 col-lg-4">
+                                    <img src="{{ res.avatar.url }}" class="img-fluid imageProfile mt-0" alt=""
+                                        srcset="" />
+                                </div>
+                                <div class="col-8 col-lg-8">
+                                    <h4>{{ res.user.username }}</h4>
+                                    {% if res.user.username in fr_rq_sender and request.user not in res.friends.all %}
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <form action="{% url 'acceptfrrequest' %}" method="POST">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="acc_fr_rq_pk" value="{{ res.pk }}" />
+                                                <button type="submit" class="btn btn-outline-success">Accept</button>
+                                            </form>
+                                        </div>
+                                        <div class="col-6">
+                                            <form action="{% url 'declinefrrequest' %}" method="POST">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="dec_fr_rq_pk" value="{{ res.pk }}" />
+                                                <button type="submit" class="btn btn-outline-danger">Decline</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+
+                                    {% if res.user.username not in fr_rq_reciever and res.user.username not in
+                                    fr_rq_sender %}
+                                    <form action="{% url 'sendfrrequest' %}" method="POST">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="sen_fr_rq_pk" value="{{ res.pk }}" />
+                                        <button type="submit" class="btn btn-outline-success">
+                                            Send Friend Request
+                                        </button>
+                                    </form>
+                                    {% endif %}
+
+                                    {% if res.user.username in fr_rq_reciever and request.user not in res.friends.all %}
+                                    <button class="btn btn-outline-secondary" disabled>
+                                        Friend Request Already Sent
+                                    </button>
+                                    {% endif %}
+
+                                    {% if request.user in res.friends.all %}
+                                    <form action="{% url 'removefromfriend' %}" method="POST">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="rem_fr_pk" value="{{ res.pk }}" />
+                                        <button type="submit" class="btn btn-outline-danger">
+                                            Remove Friend
+                                        </button>
+                                    </form>
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </section>
+            {% endif %}
+
+            {% if friend_req %}
+            <section class="searhFriendCard">
+                <div class="container">
+                    <h3>Friend Request:</h3>
+                    <div class="row">
+                        <div class="col-lg-8 col-12 mx-auto">
+                            {% for fr_rq in friend_req %}
+                            <div class="row friendrowcard">
+                                <div class="col-6 col-lg-4">
+                                    <img src="{{ fr_rq.sender.avatar.url }}" class="img-fluid imageProfile mt-0" alt=""
+                                        srcset="" />
+                                </div>
+                                <div class="col-8 col-lg-8">
+                                    <h4>{{ fr_rq.sender.user.username }}</h4>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <form action="{% url 'acceptfrrequest' %}" method="POST">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="acc_fr_rq_pk"
+                                                    value="{{ fr_rq.sender.pk }}" />
+                                                <button type="submit" class="btn btn-outline-success">Accept</button>
+                                            </form>
+                                        </div>
+                                        <div class="col-6">
+                                            <form action="{% url 'declinefrrequest' %}" method="POST">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="dec_fr_rq_pk"
+                                                    value="{{ fr_rq.sender.pk }}" />
+                                                <button type="submit" class="btn btn-outline-danger">Decline</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </section>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

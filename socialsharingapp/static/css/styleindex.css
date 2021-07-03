@@ -1,0 +1,66 @@
+:root {
+  --mainCol: #3fa83f;
+  --bgCol: #f3f2f2;
+}
+
+body {
+  background-color: var(--bgCol);
+}
+
+.mainCard {
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.imageProfile {
+  width: 6rem;
+  height: 6rem;
+  margin-top: 1rem;
+  border-radius: 50%;
+}
+
+.wkowwmLogo {
+  color: var(--mainCol);
+  height: 90px;
+  padding-top: 24px;
+  font-size: 40px;
+  width: 90px;
+  margin-bottom: 1.2rem;
+  background: rgba(92, 90, 90, 0.1);
+  border-radius: 50%;
+  display: inline-block;
+  line-height: 90px;
+  text-align: center;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.buttonAddSocial {
+  width: 100%;
+  /* margin-top: 1.2rem; */
+  margin-bottom: 1rem;
+}
+
+.searhFriendCard {
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+  margin-top: 1.4rem;
+  border-radius: 0.6rem;
+  padding: 0.4rem;
+  padding-bottom: 1rem;
+}
+
+.nofriendstext {
+  font-size: 2.4rem;
+  font-weight: 500;
+  margin-top: 3rem;
+}
+
+.friendrowcard {
+  margin-top: 1.2rem;
+}

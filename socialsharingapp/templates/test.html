@@ -1,0 +1,24 @@
+{% if user_avail.user not in fr_rq_reciever and user_avail.user not in fr_rq_sender %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="" />
+    <button type="submit" class="btn btn-outline-success">
+        Send Request
+    </button>
+</form>
+{% endif %}
+{% if user_avail.user in fr_rq_reciever and request.user not
+in user_avail.friends.all %}
+<button class="btn btn-outline-secondary" disabled>
+    Friend Request Already Sent
+</button>
+{% endif %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="" />
+    {% if request.user in user_avail.friends.all %}
+    <button type="submit" class="btn btn-outline-danger">
+        Remove Friend
+    </button>
+    {% endif %}
+</form>

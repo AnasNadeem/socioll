@@ -1,0 +1,306 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+{% block body %}
+{% load static %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-10 mx-auto">
+            <section class="mainCard">
+                <div class="container">
+                    {% for i in profile %}
+                    <div class="text-center">
+                        <img src="{{ i.avatar.url }}" class="imageProfile" alt="" />
+                        <h2 class="profileTitle">
+                            {{ user.username }}
+                        </h2>
+                        <div class="row">
+                            {% if i.instagram %}
+                            <div class="col-lg-4 col-6">
+                                <a href="https://instagram.com/{{ i.instagram }}" target="_blank">
+                                    <i class="fab fa-instagram wkowwmLogo"></i>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% if i.snapchat %}
+                            <div class="col-lg-4 col-6">
+                                <a href="https://instagram.com/{{ i.snapchat }}" target="_blank">
+                                    <i class="fab fa-instagram wkowwmLogo"></i>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% if i.twitter %}
+                            <div class="col-lg-4 col-6">
+                                <a href="https://twitter.com/{{ i.twitter }}" target="_blank">
+                                    <i class="fab fa-twitter wkowwmLogo"></i>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% if i.reddit %}
+                            <div class="col-lg-4 col-6">
+                                <a href="https://reddit.com/{{ i.reddit }}" target="_blank">
+                                    <i class="fab fa-reddit wkowwmLogo"></i>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% if i.facebook %}
+                            <div class="col-lg-4 col-6">
+                                <a href="https://facebook.com/{{ i.facebook }}" target="_blank">
+                                    <i class="fab fa-facebook-f wkowwmLogo"></i>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% if i.phone_num %}
+                            <div class="col-lg-4 col-6">
+                                <a href="call:{{ i.phone_num }}" target="_blank">
+                                    <i class="fab fa-phone wkowwmLogo"></i>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% if i.linkedin %}
+                            <div class="col-lg-4 col-6">
+                                <a href="https://linkedin.com/{{ i.linkedin }}" target="_blank">
+                                    <i class="fab fa-linkedin-in wkowwmLogo"></i>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% if i.clubhouse %}
+                            <div class="col-lg-4 col-6">
+                                <a href="https://clubhouse.com/{{ i.clubhouse }}" target="_blank">
+                                    <i class="fab fa-instagram wkowwmLogo"></i>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% if i.youtube %}
+                            <div class="col-lg-4 col-6">
+                                <a href="https://youtube.com/{{ i.youtube }}" target="_blank">
+                                    <i class="fab fa-youtube wkowwmLogo"></i>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% if i.gmail %}
+                            <div class="col-lg-4 col-6">
+                                <a href="mail-to:{{ i.gmail }}" target="_blank">
+                                    <i class="fab fa-gmail wkowwmLogo"></i>
+                                </a>
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                        <div class="row">
+                            <div class="col-lg-12 col-12">
+                                <button class="btn btn-primary buttonAddSocial" data-bs-toggle="modal"
+                                    data-bs-target="#addsocialmodal">
+                                    Add Social Account
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="addsocialmodal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Social Account</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="mt-2">
+                        <div class="row">
+                            <div class="col-lg-6 col-6">
+                                <input type="text" name="first_name" class="form-control" placeholder="First Name"
+                                    id="first_name">
+                            </div>
+                            <div class="col-lg-6 col-6">
+                                <input type="text" name="last_name" class="form-control" placeholder="Last Name"
+                                    id="last_name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <div class="row">
+                            <div class="col-lg-4 col-4">
+                                <label for="instausername">Instagram:</label>
+                            </div>
+                            <div class="col-lg-8 col-8">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="instaspanaddon">@</span>
+                                    <input type="text" name="instagram" class="form-control" placeholder="Username"
+                                        id="instausername" aria-label="Instagram Username"
+                                        aria-describedby="instaspanaddon">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <div class="row">
+                            <div class="col-lg-4 col-4">
+                                <label for="snapusername">Snapchat:</label>
+                            </div>
+                            <div class="col-lg-8 col-8">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="snapspanaddon">@</span>
+                                    <input type="text" name="snapchat" class="form-control" placeholder="Username"
+                                        id="snapusername" aria-label="Username" aria-describedby="snapspanaddon">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <div class="row">
+                            <div class="col-lg-4 col-4">
+                                <label for="twitterusername">Twitter:</label>
+                            </div>
+                            <div class="col-lg-8 col-8">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="twspanaddon">@</span>
+                                    <input type="text" name="twitter" class="form-control" placeholder="Username"
+                                        id="twitterusername" aria-label="Username" aria-describedby="twspanaddon">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <div class="row">
+                            <div class="col-lg-4 col-4">
+                                <label for="redditusername">Reddit:</label>
+                            </div>
+                            <div class="col-lg-8 col-8">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="redditspanaddon">@</span>
+                                    <input type="text" name="reddit" class="form-control" placeholder="Username"
+                                        id="redditusername" aria-label="Username" aria-describedby="redditspanaddon">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <div class="row">
+                            <div class="col-lg-4 col-4">
+                                <label for="fbusername">Facebook:</label>
+                            </div>
+                            <div class="col-lg-8 col-8">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="fbspanaddon">facebook.com/</span>
+                                    <input type="text" name="facebook" class="form-control" placeholder="Username"
+                                        id="fbusername" aria-label="Username" aria-describedby="fbspanaddon">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <div class="row">
+                            <div class="col-lg-4 col-4">
+                                <label for="phoneusername">Phone.No:</label>
+                            </div>
+                            <div class="col-lg-8 col-8">
+                                <input type="text" name="phone_num" class="form-control" placeholder="+916207781113"
+                                    id="phoneusername">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <div class="row">
+                            <div class="col-lg-4 col-4">
+                                <label for="ytusername">Youtube:</label>
+                            </div>
+                            <div class="col-lg-8 col-8">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="ytspanaddon">youtube.com/</span>
+                                    <input type="text" name="youtube" class="form-control" placeholder="Username"
+                                        id="ytusername" aria-label="Username" aria-describedby="ytspanaddon">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <div class="row">
+                            <div class="col-lg-4 col-4">
+                                <label for="ldusername">LinkedIn:</label>
+                            </div>
+                            <div class="col-lg-8 col-8">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="ytspanaddon">linkedin.com/</span>
+                                    <input type="text" name="linkedin" class="form-control" placeholder="Username"
+                                        id="ldusername" aria-label="Username" aria-describedby="ldspanaddon">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <div class="row">
+                            <div class="col-lg-4 col-4">
+                                <label for="clubusername">Clubhouse:</label>
+                            </div>
+                            <div class="col-lg-8 col-8">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="ytspanaddon">clubhouse.com/</span>
+                                    <input type="text" name="clubhouse" class="form-control" placeholder="Username"
+                                        id="clubusername" aria-label="Username" aria-describedby="clubspanaddon">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <div class="row">
+                            <div class="col-lg-4 col-4">
+                                <label for="gmailusername">Gmail:</label>
+                            </div>
+                            <div class="col-lg-8 col-8">
+                                <div class="input-group mb-3">
+                                    <input type="text" name="gmail" class="form-control" placeholder="Username"
+                                        id="gmailusername" aria-label="Username" aria-describedby="gmailspanaddon">
+                                    <span class="input-group-text" id="gmailspanaddon">@gmail.com</span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock body %}
+
+{% block js %}
+<script>
+    let first_name = document.getElementById('first_name');
+    let last_name = document.getElementById('last_name');
+    let instausername = document.getElementById('instausername');
+    let snapusername = document.getElementById('snapusername');
+    let twitterusername = document.getElementById('twitterusername');
+    let redditusername = document.getElementById('redditusername');
+    let fbusername = document.getElementById('fbusername');
+    let ytusername = document.getElementById('ytusername');
+    let ldusername = document.getElementById('ldusername');
+    let clubusername = document.getElementById('clubusername');
+    let gmailusername = document.getElementById('gmailusername');
+
+    first_name.value = `{{ user.profile.first_name }}`
+    last_name.value = `{{ user.profile.last_name }}`
+    instausername.value = `{{ user.profile.instagram }}`
+    snapusername.value = `{{ user.profile.snapchat }}`
+    twitterusername.value = `{{ user.profile.twitter }}`
+    redditusername.value = `{{ user.profile.reddit }}`
+    fbusername.value = `{{ user.profile.facebook }}`
+    ytusername.value = `{{ user.profile.youtube }}`
+    ldusername.value = `{{ user.profile.linkedin }}`
+    clubusername.value = `{{ user.profile.clubhouse }}`
+    gmailusername.value = `{{ user.profile.gmail }}`
+
+</script>
+{% endblock js %}

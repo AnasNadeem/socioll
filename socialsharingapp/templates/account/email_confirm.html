@@ -1,0 +1,39 @@
+{% extends 'account/authenBase.html' %}
+{% block title %}Confirm Mail - EfashionBazaar{% endblock title %}
+{% block mainCont %}
+{% load crispy_forms_tags %}
+{% load static %}
+<section class="accountsec">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <img src="{% static 'image/mobile_login.svg' %}" class="illustrator"
+                    alt="Undraw illustrations EfashionBazaar">
+            </div>
+            <div class="col-lg-6 col-12">
+                {% if confirmation %}
+                <h1 class="illustratorTitle">Hooray!!</h1>
+                <p class="illustratorPara">
+                    Please confirm that <a href="mailto:{{ email }}">
+                        {{ email }}</a> is an e-mail address for user {{ user_display }}.
+                </p>
+                <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn loginBtnIllus">Confirm</button>
+                </form>
+
+                {% else %}
+
+                {% url 'account_email' as email_url %}
+
+                <p class="illustratorPara">This e-mail confirmation link expired or is invalid. Please <a
+                        href="{{ email_url }}">issue a new
+                        e-mail confirmation request</a></p>
+
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock mainCont %}
