@@ -72,4 +72,4 @@ class FriendRequest(models.Model):
     objects = FriendRequestManager()
 
     def __str__(self):
-        return f"{self.sender} - {self.reciever} - {self.status}"
+        return f"{self.sender} - {self.reciever} - {self.status} - {self.updated.strftime('%X %d %m %Y')} - {self.created.strftime('%X %d %m %Y')}"

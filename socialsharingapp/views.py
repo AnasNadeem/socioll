@@ -10,10 +10,14 @@ from django.db.models import Q
 @login_required(login_url='account_login')
 def home(request):
     profile_info = Profile.objects.filter(user=request.user)
+    profile = Profile.objects.get(user=request.user)
+    fr_rq = FriendRequest.objects.invitation_recieved(profile)
     context = {
-        'profile':profile_info
+        'profile':profile_info,
+        'fr_req':fr_rq,
     }
     if request.method=="POST":
+        # profile_pic = request.FILES.get('profile_pic')
         instagram= request.POST['instagram']
         snapchat= request.POST['snapchat']
         twitter= request.POST['twitter']

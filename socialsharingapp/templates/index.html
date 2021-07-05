@@ -99,8 +99,8 @@
                         {% endfor %}
                         <div class="row">
                             <div class="col-lg-12 col-12">
-                                <button class="btn btn-outline-success buttonAddSocial" data-bs-toggle="modal"
-                                    data-bs-target="#addsocialmodal">
+                                <button class="btn btn-outline-success buttonAddSocial" data-bs-toggle="offcanvas"
+                                    data-bs-target="#addsocialcanvas" aria-controls="addsocialcanvas">
                                     Add Social Account
                                 </button>
                             </div>
@@ -111,168 +111,220 @@
         </div>
     </div>
 </div>
-<!-- Modal -->
-<div class="modal fade" id="addsocialmodal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add Social Account</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="" method="post">
-                {% csrf_token %}
-                <div class="modal-body">
-                    <div class="mt-2">
-                        <div class="row">
-                            <div class="col-lg-4 col-4">
-                                <label for="instausername">Instagram:</label>
-                            </div>
-                            <div class="col-lg-8 col-8">
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="instaspanaddon">@</span>
-                                    <input type="text" name="instagram" class="form-control" placeholder="Username"
-                                        id="instausername" aria-label="Instagram Username"
-                                        aria-describedby="instaspanaddon">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-2">
-                        <div class="row">
-                            <div class="col-lg-4 col-4">
-                                <label for="snapusername">Snapchat:</label>
-                            </div>
-                            <div class="col-lg-8 col-8">
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="snapspanaddon">@</span>
-                                    <input type="text" name="snapchat" class="form-control" placeholder="Username"
-                                        id="snapusername" aria-label="Username" aria-describedby="snapspanaddon">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-2">
-                        <div class="row">
-                            <div class="col-lg-4 col-4">
-                                <label for="twitterusername">Twitter:</label>
-                            </div>
-                            <div class="col-lg-8 col-8">
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="twspanaddon">@</span>
-                                    <input type="text" name="twitter" class="form-control" placeholder="Username"
-                                        id="twitterusername" aria-label="Username" aria-describedby="twspanaddon">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-2">
-                        <div class="row">
-                            <div class="col-lg-4 col-4">
-                                <label for="redditusername">Reddit:</label>
-                            </div>
-                            <div class="col-lg-8 col-8">
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="redditspanaddon">@</span>
-                                    <input type="text" name="reddit" class="form-control" placeholder="Username"
-                                        id="redditusername" aria-label="Username" aria-describedby="redditspanaddon">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-2">
-                        <div class="row">
-                            <div class="col-lg-4 col-4">
-                                <label for="fbusername">Facebook:</label>
-                            </div>
-                            <div class="col-lg-8 col-8">
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="fbspanaddon">facebook.com/</span>
-                                    <input type="text" name="facebook" class="form-control" placeholder="Username"
-                                        id="fbusername" aria-label="Username" aria-describedby="fbspanaddon">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-2">
-                        <div class="row">
-                            <div class="col-lg-4 col-4">
-                                <label for="phoneusername">Phone.No:</label>
-                            </div>
-                            <div class="col-lg-8 col-8">
-                                <input type="text" name="phone_num" class="form-control" placeholder="+916207781113"
-                                    id="phoneusername">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-2">
-                        <div class="row">
-                            <div class="col-lg-4 col-4">
-                                <label for="ytusername">Youtube:</label>
-                            </div>
-                            <div class="col-lg-8 col-8">
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="ytspanaddon">youtube.com/</span>
-                                    <input type="text" name="youtube" class="form-control" placeholder="Username"
-                                        id="ytusername" aria-label="Username" aria-describedby="ytspanaddon">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-2">
-                        <div class="row">
-                            <div class="col-lg-4 col-4">
-                                <label for="ldusername">LinkedIn:</label>
-                            </div>
-                            <div class="col-lg-8 col-8">
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="ytspanaddon">linkedin.com/</span>
-                                    <input type="text" name="linkedin" class="form-control" placeholder="Username"
-                                        id="ldusername" aria-label="Username" aria-describedby="ldspanaddon">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-2">
-                        <div class="row">
-                            <div class="col-lg-4 col-4">
-                                <label for="whatusername">Whatsapp:</label>
-                            </div>
-                            <div class="col-lg-8 col-8">
-                                <input type="text" name="whatsapp" class="form-control" placeholder="Phone No:"
-                                    id="whatusername" aria-label="whatsappuser" aria-describedby="whatspanaddon">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-2">
-                        <div class="row">
-                            <div class="col-lg-4 col-4">
-                                <label for="gmailusername">Gmail:</label>
-                            </div>
-                            <div class="col-lg-8 col-8">
-                                <div class="input-group mb-3">
-                                    <input type="text" name="gmail" class="form-control" placeholder="Username"
-                                        id="gmailusername" aria-label="Username" aria-describedby="gmailspanaddon">
-                                    <span class="input-group-text" id="gmailspanaddon">@gmail.com</span>
 
-                                </div>
-                            </div>
+<!-- Off canvas begins  -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="addsocialcanvas" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 id="offcanvasRightLabel">Add Social Account</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-lg-6 col-6">
+                    <label class="custom-file-label" for="customFile">Change Profile:</label>
+                </div>
+                <div class="col-lg-6 col-6">
+                    <div class="input-group mb-2">
+                        <input type="file" class="custom-file-input" name="profile_pic" id="customFile"
+                            accept="image\*">
+                    </div>
+                </div>
+            </div>
+            <div class="mt-2">
+                <div class="row">
+                    <div class="col-lg-4 col-4">
+                        <label for="instausername">Instagram:</label>
+                    </div>
+                    <div class="col-lg-8 col-8">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="instaspanaddon">@</span>
+                            <input type="text" name="instagram" class="form-control" placeholder="Username"
+                                id="instausername" aria-label="Instagram Username" aria-describedby="instaspanaddon">
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        Close
-                    </button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+            <div class="mt-2">
+                <div class="row">
+                    <div class="col-lg-4 col-4">
+                        <label for="snapusername">Snapchat:</label>
+                    </div>
+                    <div class="col-lg-8 col-8">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="snapspanaddon">@</span>
+                            <input type="text" name="snapchat" class="form-control" placeholder="Username"
+                                id="snapusername" aria-label="Username" aria-describedby="snapspanaddon">
+                        </div>
+                    </div>
                 </div>
-            </form>
-        </div>
+            </div>
+            <div class="mt-2">
+                <div class="row">
+                    <div class="col-lg-4 col-4">
+                        <label for="twitterusername">Twitter:</label>
+                    </div>
+                    <div class="col-lg-8 col-8">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="twspanaddon">@</span>
+                            <input type="text" name="twitter" class="form-control" placeholder="Username"
+                                id="twitterusername" aria-label="Username" aria-describedby="twspanaddon">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-2">
+                <div class="row">
+                    <div class="col-lg-4 col-4">
+                        <label for="redditusername">Reddit:</label>
+                    </div>
+                    <div class="col-lg-8 col-8">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="redditspanaddon">@</span>
+                            <input type="text" name="reddit" class="form-control" placeholder="Username"
+                                id="redditusername" aria-label="Username" aria-describedby="redditspanaddon">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-2">
+                <div class="row">
+                    <div class="col-lg-4 col-4">
+                        <label for="fbusername">Facebook:</label>
+                    </div>
+                    <div class="col-lg-8 col-8">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="fbspanaddon">facebook.com/</span>
+                            <input type="text" name="facebook" class="form-control" placeholder="Username"
+                                id="fbusername" aria-label="Username" aria-describedby="fbspanaddon">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-2">
+                <div class="row">
+                    <div class="col-lg-4 col-4">
+                        <label for="phoneusername">Phone.No:</label>
+                    </div>
+                    <div class="col-lg-8 col-8">
+                        <input type="text" name="phone_num" class="form-control" placeholder="+916207781113"
+                            id="phoneusername">
+                    </div>
+                </div>
+            </div>
+            <div class="mt-2">
+                <div class="row">
+                    <div class="col-lg-4 col-4">
+                        <label for="ytusername">Youtube:</label>
+                    </div>
+                    <div class="col-lg-8 col-8">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="ytspanaddon">youtube.com/</span>
+                            <input type="text" name="youtube" class="form-control" placeholder="Username"
+                                id="ytusername" aria-label="Username" aria-describedby="ytspanaddon">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-2">
+                <div class="row">
+                    <div class="col-lg-4 col-4">
+                        <label for="ldusername">LinkedIn:</label>
+                    </div>
+                    <div class="col-lg-8 col-8">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="ytspanaddon">linkedin.com/</span>
+                            <input type="text" name="linkedin" class="form-control" placeholder="Username"
+                                id="ldusername" aria-label="Username" aria-describedby="ldspanaddon">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-2">
+                <div class="row">
+                    <div class="col-lg-4 col-4">
+                        <label for="whatusername">Whatsapp:</label>
+                    </div>
+                    <div class="col-lg-8 col-8">
+                        <input type="text" name="whatsapp" class="form-control" placeholder="Phone No:"
+                            id="whatusername" aria-label="whatsappuser" aria-describedby="whatspanaddon">
+                    </div>
+                </div>
+            </div>
+            <div class="mt-2">
+                <div class="row">
+                    <div class="col-lg-4 col-4">
+                        <label for="gmailusername">Gmail:</label>
+                    </div>
+                    <div class="col-lg-8 col-8">
+                        <div class="input-group mb-3">
+                            <input type="text" name="gmail" class="form-control" placeholder="Username"
+                                id="gmailusername" aria-label="Username" aria-describedby="gmailspanaddon">
+                            <span class="input-group-text" id="gmailspanaddon">@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <button type="submit" class="btn btn-outline-success">Save Details</button>
+                </div>
+                <div class="col-6">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="offcanvas">Close</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
+<!-- Off canvas ends  -->
+{% if fr_req %}
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    {% for i in fr_req %}
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto">New Friend Request</strong>
+            <small class="text-muted">{{ i.created|date:"D d M Y" }}</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            <div class="row">
+                <div class="col-4">
+                    <img src="{{ i.sender.avatar.url }}" class="img-fluid d-inline-block rounded"
+                        alt="Friend request from {{ i.sender.user.username }}">
+                </div>
+                <div class="col-8">
+                    <h5>From @{{ i.sender.user.username }} </h5>
+                    <div class="row">
+                        <div class="col-6">
+                            <form action="{% url 'acceptfrrequest' %}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="acc_fr_rq_pk" value="{{ i.sender.pk }}" />
+                                <button type="submit" class="btn btn-outline-success">Accept</button>
+                            </form>
+                        </div>
+                        <div class="col-6">
+                            <form action="{% url 'declinefrrequest' %}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="dec_fr_rq_pk" value="{{ i.sender.pk }}" />
+                                <button type="submit" class="btn btn-outline-danger">Decline</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
 {% endblock body %}
 
 {% block js %}
 <script>
+    $(document).ready(function () { $('.toast').toast('show'); });
+
     let instausername = document.getElementById('instausername');
     let snapusername = document.getElementById('snapusername');
     let twitterusername = document.getElementById('twitterusername');
@@ -295,4 +347,5 @@
     gmailusername.value = `{{ user.profile.gmail }}`
     phoneusername.value = `{{ user.profile.phone_num }}`
 </script>
+
 {% endblock js %}
