@@ -23,8 +23,8 @@ from django.db.models import Q
 #         return available
 
 class Profile(models.Model):
-    first_name = models.CharField(max_length=40, blank=True)
-    last_name = models.CharField(max_length=40, blank=True)
+    # first_name = models.CharField(max_length=40, blank=True)
+    # last_name = models.CharField(max_length=40, blank=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     instagram= models.CharField(max_length=40, blank=True)
     snapchat= models.CharField(max_length=40, blank=True)
@@ -34,7 +34,8 @@ class Profile(models.Model):
     phone_num = models.CharField(max_length=40, blank=True)
     linkedin= models.CharField(max_length=40, blank=True)
     youtube= models.CharField(max_length=40, blank=True)
-    clubhouse= models.CharField(max_length=40, blank=True)
+    whatsapp= models.CharField(max_length=40, blank=True)
+    # clubhouse= models.CharField(max_length=40, blank=True)
     gmail= models.CharField(max_length=40, blank=True)
     avatar = models.ImageField(upload_to='photo', default="photo/image.jpg")
     friends = models.ManyToManyField(User, blank=True, related_name="profiles")

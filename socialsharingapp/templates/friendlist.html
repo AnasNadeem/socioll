@@ -13,82 +13,86 @@
                     <div class="text-center">
                         <img src="{{ j.profile.avatar.url }}" class="imageProfile" alt="">
                         <h2 class="profileTitle">
-
-                            {% if j.profile.first_name or j.profile.last_name %}
-                            {{ j.profile.first_name }}
-                            {% else %}
                             {{ j.profile.user }}
-                            {% endif %}
-
                         </h2>
                         <div class="row">
                             {% if j.profile.instagram %}
                             <div class="col-lg-4 col-6">
                                 <a href="https://instagram.com/{{ j.profile.instagram }}" target="_blank">
-                                    <i class="fab fa-instagram wkowwmLogo"></i>
+                                    <i class="fab fa-instagram wkowwmLogo" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="@{{ j.profile.instagram }}"></i>
                                 </a>
                             </div>
                             {% endif %}
                             {% if j.profile.snapchat %}
                             <div class="col-lg-4 col-6">
-                                <a href="https://instagram.com/{{ j.profile.snapchat }}" target="_blank">
-                                    <i class="fab fa-instagram wkowwmLogo"></i>
+                                <a href="https://snapchat.com/{{ j.profile.snapchat }}" target="_blank">
+                                    <i class="fab fa-snapchat-ghost wkowwmLogo" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="@{{ j.profile.snapchat }}"></i>
                                 </a>
                             </div>
                             {% endif %}
                             {% if j.profile.twitter %}
                             <div class="col-lg-4 col-6">
                                 <a href="https://twitter.com/{{ j.profile.twitter }}" target="_blank">
-                                    <i class="fab fa-twitter wkowwmLogo"></i>
+                                    <i class="fab fa-twitter wkowwmLogo" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="@{{ j.profile.twitter }}"></i>
                                 </a>
                             </div>
                             {% endif %}
                             {% if j.profile.reddit %}
                             <div class="col-lg-4 col-6">
                                 <a href="https://reddit.com/{{ j.profile.reddit }}" target="_blank">
-                                    <i class="fab fa-reddit wkowwmLogo"></i>
+                                    <i class="fab fa-reddit wkowwmLogo" data-bs-toggle="tooltip" data-bs-placement="top"
+                                        title="@{{ j.profile.reddit }}"></i>
                                 </a>
                             </div>
                             {% endif %}
                             {% if j.profile.facebook %}
                             <div class="col-lg-4 col-6">
                                 <a href="https://facebook.com/{{ j.profile.facebook }}" target="_blank">
-                                    <i class="fab fa-facebook-f wkowwmLogo"></i>
+                                    <i class="fab fa-facebook-f wkowwmLogo" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="@{{ j.profile.facebook }}"></i>
                                 </a>
                             </div>
                             {% endif %}
                             {% if j.profile.phone_num %}
                             <div class="col-lg-4 col-6">
-                                <a href="call:{{ j.profile.phone_num }}" target="_blank">
-                                    <i class="fab fa-phone wkowwmLogo"></i>
+                                <a href="tel:{{ j.profile.phone_num }}" target="_blank">
+                                    <i class="fas fa-phone wkowwmLogo" data-bs-toggle="tooltip" data-bs-placement="top"
+                                        title="{{ j.profile.phone_num }}"></i>
                                 </a>
                             </div>
                             {% endif %}
                             {% if j.profile.linkedin %}
                             <div class="col-lg-4 col-6">
                                 <a href="https://linkedin.com/{{ j.profile.linkedin }}" target="_blank">
-                                    <i class="fab fa-linkedin-in wkowwmLogo"></i>
+                                    <i class="fab fa-linkedin-in wkowwmLogo" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="@{{ j.profile.linkedin }}"></i>
                                 </a>
                             </div>
                             {% endif %}
-                            {% if j.profile.clubhouse %}
+                            {% if j.profile.whatsapp %}
                             <div class="col-lg-4 col-6">
-                                <a href="https://clubhouse.com/{{ j.profile.clubhouse }}" target="_blank">
-                                    <i class="fab fa-instagram wkowwmLogo"></i>
+                                <a href="https://wa.me/{{ j.profile.whatsapp }}" target="_blank">
+                                    <i class="fab fa-whatsapp wkowwmLogo" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="{{ j.profile.whatsapp }}"></i>
                                 </a>
                             </div>
                             {% endif %}
                             {% if j.profile.youtube %}
                             <div class="col-lg-4 col-6">
                                 <a href="https://youtube.com/{{ j.profile.youtube }}" target="_blank">
-                                    <i class="fab fa-youtube wkowwmLogo"></i>
+                                    <i class="fab fa-youtube wkowwmLogo" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="{{ j.profile.youtube }}"></i>
                                 </a>
                             </div>
                             {% endif %}
                             {% if j.profile.gmail %}
                             <div class="col-lg-4 col-6">
-                                <a href="mail-to:{{ j.profile.gmail }}" target="_blank">
-                                    <i class="fab fa-gmail wkowwmLogo"></i>
+                                <a href="mailto:{{ j.profile.gmail }}" target="_blank">
+                                    <i class="far fa-envelope wkowwmLogo" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="@{{ j.profile.gmail }}"></i>
                                 </a>
                             </div>
                             {% endif %}

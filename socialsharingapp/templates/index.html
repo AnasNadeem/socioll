@@ -18,70 +18,80 @@
                             {% if i.instagram %}
                             <div class="col-lg-4 col-6">
                                 <a href="https://instagram.com/{{ i.instagram }}" target="_blank">
-                                    <i class="fab fa-instagram wkowwmLogo"></i>
+                                    <i class="fab fa-instagram wkowwmLogo" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="@{{ i.instagram }}"></i>
                                 </a>
                             </div>
                             {% endif %}
                             {% if i.snapchat %}
                             <div class="col-lg-4 col-6">
-                                <a href="https://instagram.com/{{ i.snapchat }}" target="_blank">
-                                    <i class="fab fa-instagram wkowwmLogo"></i>
+                                <a href="https://snpchat.com/{{ i.snapchat }}" target="_blank">
+                                    <i class="fab fa-snapchat-ghost wkowwmLogo" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="@{{ i.snapchat }}"></i>
                                 </a>
                             </div>
                             {% endif %}
                             {% if i.twitter %}
                             <div class="col-lg-4 col-6">
                                 <a href="https://twitter.com/{{ i.twitter }}" target="_blank">
-                                    <i class="fab fa-twitter wkowwmLogo"></i>
+                                    <i class="fab fa-twitter wkowwmLogo" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="@{{ i.twitter }}"></i>
                                 </a>
                             </div>
                             {% endif %}
                             {% if i.reddit %}
                             <div class="col-lg-4 col-6">
                                 <a href="https://reddit.com/{{ i.reddit }}" target="_blank">
-                                    <i class="fab fa-reddit wkowwmLogo"></i>
+                                    <i class="fab fa-reddit wkowwmLogo" data-bs-toggle="tooltip" data-bs-placement="top"
+                                        title="@{{ i.reddit }}"></i>
                                 </a>
                             </div>
                             {% endif %}
                             {% if i.facebook %}
                             <div class="col-lg-4 col-6">
                                 <a href="https://facebook.com/{{ i.facebook }}" target="_blank">
-                                    <i class="fab fa-facebook-f wkowwmLogo"></i>
+                                    <i class="fab fa-facebook-f wkowwmLogo" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="@{{ i.facebook }}"></i>
                                 </a>
                             </div>
                             {% endif %}
                             {% if i.phone_num %}
                             <div class="col-lg-4 col-6">
-                                <a href="call:{{ i.phone_num }}" target="_blank">
-                                    <i class="fab fa-phone wkowwmLogo"></i>
+                                <a href="tel:{{ i.phone_num }}">
+                                    <i class="fas fa-phone wkowwmLogo" data-bs-toggle="tooltip" data-bs-placement="top"
+                                        title="{{ i.phone_num }}"></i>
                                 </a>
                             </div>
                             {% endif %}
                             {% if i.linkedin %}
                             <div class="col-lg-4 col-6">
                                 <a href="https://linkedin.com/{{ i.linkedin }}" target="_blank">
-                                    <i class="fab fa-linkedin-in wkowwmLogo"></i>
+                                    <i class="fab fa-linkedin-in wkowwmLogo" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="@{{ i.linkedin }}"></i>
                                 </a>
                             </div>
                             {% endif %}
-                            {% if i.clubhouse %}
+                            {% if i.whatsapp %}
                             <div class="col-lg-4 col-6">
-                                <a href="https://clubhouse.com/{{ i.clubhouse }}" target="_blank">
-                                    <i class="fab fa-instagram wkowwmLogo"></i>
+                                <a href="https://wa.me/{{ i.whatsapp }}" target="_blank">
+                                    <i class="fab fa-whatsapp wkowwmLogo" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="{{ i.whatsapp }}"></i>
                                 </a>
                             </div>
                             {% endif %}
                             {% if i.youtube %}
                             <div class="col-lg-4 col-6">
                                 <a href="https://youtube.com/{{ i.youtube }}" target="_blank">
-                                    <i class="fab fa-youtube wkowwmLogo"></i>
+                                    <i class="fab fa-youtube wkowwmLogo" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="{{ i.youtube }}"></i>
                                 </a>
                             </div>
                             {% endif %}
                             {% if i.gmail %}
                             <div class="col-lg-4 col-6">
-                                <a href="mail-to:{{ i.gmail }}" target="_blank">
-                                    <i class="fab fa-gmail wkowwmLogo"></i>
+                                <a href="mailto:{{ i.gmail }}" target="_blank">
+                                    <i class="far fa-envelope wkowwmLogo" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="@{{ i.gmail }}"></i>
                                 </a>
                             </div>
                             {% endif %}
@@ -89,7 +99,7 @@
                         {% endfor %}
                         <div class="row">
                             <div class="col-lg-12 col-12">
-                                <button class="btn btn-primary buttonAddSocial" data-bs-toggle="modal"
+                                <button class="btn btn-outline-success buttonAddSocial" data-bs-toggle="modal"
                                     data-bs-target="#addsocialmodal">
                                     Add Social Account
                                 </button>
@@ -112,18 +122,6 @@
             <form action="" method="post">
                 {% csrf_token %}
                 <div class="modal-body">
-                    <div class="mt-2">
-                        <div class="row">
-                            <div class="col-lg-6 col-6">
-                                <input type="text" name="first_name" class="form-control" placeholder="First Name"
-                                    id="first_name">
-                            </div>
-                            <div class="col-lg-6 col-6">
-                                <input type="text" name="last_name" class="form-control" placeholder="Last Name"
-                                    id="last_name">
-                            </div>
-                        </div>
-                    </div>
                     <div class="mt-2">
                         <div class="row">
                             <div class="col-lg-4 col-4">
@@ -237,14 +235,11 @@
                     <div class="mt-2">
                         <div class="row">
                             <div class="col-lg-4 col-4">
-                                <label for="clubusername">Clubhouse:</label>
+                                <label for="whatusername">Whatsapp:</label>
                             </div>
                             <div class="col-lg-8 col-8">
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="ytspanaddon">clubhouse.com/</span>
-                                    <input type="text" name="clubhouse" class="form-control" placeholder="Username"
-                                        id="clubusername" aria-label="Username" aria-describedby="clubspanaddon">
-                                </div>
+                                <input type="text" name="whatsapp" class="form-control" placeholder="Phone No:"
+                                    id="whatusername" aria-label="whatsappuser" aria-describedby="whatspanaddon">
                             </div>
                         </div>
                     </div>
@@ -278,8 +273,6 @@
 
 {% block js %}
 <script>
-    let first_name = document.getElementById('first_name');
-    let last_name = document.getElementById('last_name');
     let instausername = document.getElementById('instausername');
     let snapusername = document.getElementById('snapusername');
     let twitterusername = document.getElementById('twitterusername');
@@ -287,11 +280,10 @@
     let fbusername = document.getElementById('fbusername');
     let ytusername = document.getElementById('ytusername');
     let ldusername = document.getElementById('ldusername');
-    let clubusername = document.getElementById('clubusername');
+    let whatusername = document.getElementById('whatusername');
     let gmailusername = document.getElementById('gmailusername');
+    let phoneusername = document.getElementById('phoneusername');
 
-    first_name.value = `{{ user.profile.first_name }}`
-    last_name.value = `{{ user.profile.last_name }}`
     instausername.value = `{{ user.profile.instagram }}`
     snapusername.value = `{{ user.profile.snapchat }}`
     twitterusername.value = `{{ user.profile.twitter }}`
@@ -299,8 +291,8 @@
     fbusername.value = `{{ user.profile.facebook }}`
     ytusername.value = `{{ user.profile.youtube }}`
     ldusername.value = `{{ user.profile.linkedin }}`
-    clubusername.value = `{{ user.profile.clubhouse }}`
+    whatusername.value = `{{ user.profile.whatsapp }}`
     gmailusername.value = `{{ user.profile.gmail }}`
-
+    phoneusername.value = `{{ user.profile.phone_num }}`
 </script>
 {% endblock js %}

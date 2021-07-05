@@ -14,8 +14,6 @@ def home(request):
         'profile':profile_info
     }
     if request.method=="POST":
-        first_name= request.POST['first_name']
-        last_name= request.POST['last_name']
         instagram= request.POST['instagram']
         snapchat= request.POST['snapchat']
         twitter= request.POST['twitter']
@@ -24,12 +22,10 @@ def home(request):
         phone_num =request.POST['phone_num']
         linkedin= request.POST['linkedin']
         youtube= request.POST['youtube']
-        clubhouse= request.POST['clubhouse']
+        whatsapp= request.POST['whatsapp']
         gmail= request.POST['gmail']
 
         profile_in = Profile.objects.get(user=request.user)
-        profile_in.first_name = first_name
-        profile_in.last_name = last_name
         profile_in.instagram = instagram
         profile_in.snapchat = snapchat
         profile_in.twitter = twitter
@@ -38,7 +34,7 @@ def home(request):
         profile_in.phone_num = phone_num
         profile_in.linkedin = linkedin
         profile_in.youtube = youtube
-        profile_in.clubhouse = clubhouse
+        profile_in.whatsapp = whatsapp
         profile_in.gmail = gmail
         profile_in.save()
         messages.info(request, f"Social Account added.")

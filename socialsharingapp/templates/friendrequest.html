@@ -14,7 +14,7 @@
                                     required>
                             </div>
                             <div class="col-6 col-lg-4">
-                                <button class="btn btn-primary" type="submit">Search</button>
+                                <button class="btn btn-outline-success" type="submit">Search</button>
                             </div>
                         </form>
 
@@ -55,8 +55,7 @@
                                     </div>
                                     {% endif %}
 
-                                    {% if res.user.username not in fr_rq_reciever and res.user.username not in
-                                    fr_rq_sender %}
+                                    {% if res.user.username not in fr_rq_reciever and res.user.username not in fr_rq_sender %}
                                     <form action="{% url 'sendfrrequest' %}" method="POST">
                                         {% csrf_token %}
                                         <input type="hidden" name="sen_fr_rq_pk" value="{{ res.pk }}" />
